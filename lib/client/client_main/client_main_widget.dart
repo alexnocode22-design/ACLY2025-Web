@@ -1696,6 +1696,7 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                           ),
                         ),
                         Container(
+                          width: 400.0,
                           decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -1812,220 +1813,244 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                   ],
                                 ),
                               ),
-                              Container(
-                                width: double.infinity,
-                                height: 165.0,
-                                decoration: BoxDecoration(),
-                                child: FutureBuilder<
-                                    List<CombinedNutritionplansViewRow>>(
-                                  future: CombinedNutritionplansViewTable()
-                                      .queryRows(
-                                    queryFn: (q) => q
-                                        .eqOrNull(
-                                          'nutrition_plan_status',
-                                          true,
-                                        )
-                                        .eqOrNull(
-                                          'nutrition_plan_publish',
-                                          true,
-                                        )
-                                        .eqOrNull(
-                                          'trainer_active',
-                                          true,
-                                        ),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: Image.asset(
-                                          'assets/images/logo.png',
-                                        ),
-                                      );
-                                    }
-                                    List<CombinedNutritionplansViewRow>
-                                        nutritionPlanListViewCombinedNutritionplansViewRowList =
-                                        snapshot.data!;
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 165.0,
+                                  decoration: BoxDecoration(),
+                                  child: FutureBuilder<
+                                      List<CombinedNutritionplansViewRow>>(
+                                    future: CombinedNutritionplansViewTable()
+                                        .queryRows(
+                                      queryFn: (q) => q
+                                          .eqOrNull(
+                                            'nutrition_plan_status',
+                                            true,
+                                          )
+                                          .eqOrNull(
+                                            'nutrition_plan_publish',
+                                            true,
+                                          )
+                                          .eqOrNull(
+                                            'trainer_active',
+                                            true,
+                                          ),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: Image.asset(
+                                            'assets/images/logo.png',
+                                          ),
+                                        );
+                                      }
+                                      List<CombinedNutritionplansViewRow>
+                                          nutritionPlanListViewCombinedNutritionplansViewRowList =
+                                          snapshot.data!;
 
-                                    return ListView.separated(
-                                      padding: EdgeInsets.fromLTRB(
-                                        10.0,
-                                        0,
-                                        0,
-                                        0,
-                                      ),
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount:
-                                          nutritionPlanListViewCombinedNutritionplansViewRowList
-                                              .length,
-                                      separatorBuilder: (_, __) =>
-                                          SizedBox(width: 12.0),
-                                      itemBuilder: (context,
-                                          nutritionPlanListViewIndex) {
-                                        final nutritionPlanListViewCombinedNutritionplansViewRow =
-                                            nutritionPlanListViewCombinedNutritionplansViewRowList[
-                                                nutritionPlanListViewIndex];
-                                        return Align(
-                                          alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 20.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  MainInfoNutritionPlanWidget
-                                                      .routeName,
-                                                  queryParameters: {
-                                                    'productID': serializeParam(
-                                                      nutritionPlanListViewCombinedNutritionplansViewRow
-                                                          .id,
-                                                      ParamType.int,
-                                                    ),
-                                                    'productType':
-                                                        serializeParam(
-                                                      'План питания',
-                                                      ParamType.String,
-                                                    ),
-                                                    'productName':
-                                                        serializeParam(
-                                                      nutritionPlanListViewCombinedNutritionplansViewRow
-                                                          .nutritionPlanName,
-                                                      ParamType.String,
-                                                    ),
-                                                    'productPrice':
-                                                        serializeParam(
-                                                      nutritionPlanListViewCombinedNutritionplansViewRow
-                                                          .nutritionPlanPrice,
-                                                      ParamType.int,
-                                                    ),
-                                                    'productPhoto1':
-                                                        serializeParam(
-                                                      nutritionPlanListViewCombinedNutritionplansViewRow
-                                                          .nutritionPlanPhoto1,
-                                                      ParamType.String,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Container(
-                                                width: 147.0,
-                                                height: 140.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 20.0,
-                                                      color: Color(0x3F000000),
-                                                      offset: Offset(
-                                                        5.0,
-                                                        10.0,
+                                      return ListView.separated(
+                                        padding: EdgeInsets.fromLTRB(
+                                          10.0,
+                                          0,
+                                          0,
+                                          0,
+                                        ),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount:
+                                            nutritionPlanListViewCombinedNutritionplansViewRowList
+                                                .length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(width: 12.0),
+                                        itemBuilder: (context,
+                                            nutritionPlanListViewIndex) {
+                                          final nutritionPlanListViewCombinedNutritionplansViewRow =
+                                              nutritionPlanListViewCombinedNutritionplansViewRowList[
+                                                  nutritionPlanListViewIndex];
+                                          return Align(
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 20.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    MainInfoNutritionPlanWidget
+                                                        .routeName,
+                                                    queryParameters: {
+                                                      'productID':
+                                                          serializeParam(
+                                                        nutritionPlanListViewCombinedNutritionplansViewRow
+                                                            .id,
+                                                        ParamType.int,
                                                       ),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(4.0, 4.0,
-                                                                4.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Flexible(
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.0, 0.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(3.0),
-                                                              child: Container(
-                                                                constraints:
-                                                                    BoxConstraints(
-                                                                  minWidth:
-                                                                      139.0,
-                                                                  minHeight:
-                                                                      75.0,
-                                                                ),
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  image:
-                                                                      DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    image: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        nutritionPlanListViewCombinedNutritionplansViewRow
-                                                                            .nutritionPlanPhoto1,
-                                                                        'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/Frame_30_(2).png',
-                                                                      ),
-                                                                    ).image,
+                                                      'productType':
+                                                          serializeParam(
+                                                        'План питания',
+                                                        ParamType.String,
+                                                      ),
+                                                      'productName':
+                                                          serializeParam(
+                                                        nutritionPlanListViewCombinedNutritionplansViewRow
+                                                            .nutritionPlanName,
+                                                        ParamType.String,
+                                                      ),
+                                                      'productPrice':
+                                                          serializeParam(
+                                                        nutritionPlanListViewCombinedNutritionplansViewRow
+                                                            .nutritionPlanPrice,
+                                                        ParamType.int,
+                                                      ),
+                                                      'productPhoto1':
+                                                          serializeParam(
+                                                        nutritionPlanListViewCombinedNutritionplansViewRow
+                                                            .nutritionPlanPhoto1,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width: 147.0,
+                                                  height: 140.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 20.0,
+                                                        color:
+                                                            Color(0x3F000000),
+                                                        offset: Offset(
+                                                          5.0,
+                                                          10.0,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  4.0,
+                                                                  4.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Flexible(
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      -1.0,
+                                                                      0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            3.0),
+                                                                child:
+                                                                    Container(
+                                                                  constraints:
+                                                                      BoxConstraints(
+                                                                    minWidth:
+                                                                        139.0,
+                                                                    minHeight:
+                                                                        75.0,
+                                                                  ),
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      image: Image
+                                                                          .network(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          nutritionPlanListViewCombinedNutritionplansViewRow
+                                                                              .nutritionPlanPhoto1,
+                                                                          'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/Frame_30_(2).png',
+                                                                        ),
+                                                                      ).image,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  -1.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        5.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                nutritionPlanListViewCombinedNutritionplansViewRow
-                                                                    .nutritionPlanName,
-                                                                'Набор массы за месяц',
-                                                              ).maybeHandleOverflow(
-                                                                maxChars: 40,
-                                                                replacement:
-                                                                    '…',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .readexPro(
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    -1.0, 0.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  nutritionPlanListViewCombinedNutritionplansViewRow
+                                                                      .nutritionPlanName,
+                                                                  'Набор массы за месяц',
+                                                                ).maybeHandleOverflow(
+                                                                  maxChars: 40,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: Color(
+                                                                          0xFF2C2C2C),
+                                                                      fontSize: MediaQuery.sizeOf(context).width >=
+                                                                              380.0
+                                                                          ? 10.0
+                                                                          : 8.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -2034,155 +2059,132 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Color(
-                                                                        0xFF2C2C2C),
-                                                                    fontSize: MediaQuery.sizeOf(context).width >=
-                                                                            380.0
-                                                                        ? 10.0
-                                                                        : 8.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Divider(
-                                                          thickness: 0.5,
-                                                          color:
-                                                              Color(0xFFEEEEEE),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      4.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    nutritionPlanListViewCombinedNutritionplansViewRow
-                                                                        .userPhoto,
-                                                                    'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/blank_avatar.jpg',
-                                                                  ),
-                                                                  width: 24.0,
-                                                                  height: 24.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            6.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        '${nutritionPlanListViewCombinedNutritionplansViewRow.userName} ${nutritionPlanListViewCombinedNutritionplansViewRow.userSurname}',
-                                                                        'Нет имени',
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.inter(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                            color:
-                                                                                Color(0xFF292D32),
-                                                                            fontSize:
-                                                                                6.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                          ),
+                                                          Divider(
+                                                            thickness: 0.5,
+                                                            color: Color(
+                                                                0xFFEEEEEE),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        8.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        4.0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      nutritionPlanListViewCombinedNutritionplansViewRow
+                                                                          .userPhoto,
+                                                                      'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/blank_avatar.jpg',
                                                                     ),
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'Тренер',
+                                                                    width: 24.0,
+                                                                    height:
+                                                                        24.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          6.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .end,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          '${nutritionPlanListViewCombinedNutritionplansViewRow.userName} ${nutritionPlanListViewCombinedNutritionplansViewRow.userSurname}',
+                                                                          'Нет имени',
+                                                                        ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
                                                                               font: GoogleFonts.inter(
-                                                                                fontWeight: FontWeight.w300,
+                                                                                fontWeight: FontWeight.w500,
                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                               color: Color(0xFF292D32),
                                                                               fontSize: 6.0,
                                                                               letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w300,
+                                                                              fontWeight: FontWeight.w500,
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          'Тренер',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.inter(
+                                                                                  fontWeight: FontWeight.w300,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                                color: Color(0xFF292D32),
+                                                                                fontSize: 6.0,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FontWeight.w300,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         Container(
-                          width: double.infinity,
+                          width: 400.0,
                           decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -2283,310 +2285,319 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                   ],
                                 ),
                               ),
-                              Container(
-                                width: 400.0,
-                                height: 97.0,
-                                decoration: BoxDecoration(),
-                                child: FutureBuilder<
-                                    List<CombinedDigitalproductViewRow>>(
-                                  future: CombinedDigitalproductViewTable()
-                                      .queryRows(
-                                    queryFn: (q) => q
-                                        .eqOrNull(
-                                          'digital_product_status',
-                                          true,
-                                        )
-                                        .eqOrNull(
-                                          'digital_product_publish',
-                                          true,
-                                        )
-                                        .eqOrNull(
-                                          'trainer_active',
-                                          true,
-                                        ),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: Image.asset(
-                                          'assets/images/logo.png',
-                                        ),
-                                      );
-                                    }
-                                    List<CombinedDigitalproductViewRow>
-                                        digiprodListViewCombinedDigitalproductViewRowList =
-                                        snapshot.data!;
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 97.0,
+                                  decoration: BoxDecoration(),
+                                  child: FutureBuilder<
+                                      List<CombinedDigitalproductViewRow>>(
+                                    future: CombinedDigitalproductViewTable()
+                                        .queryRows(
+                                      queryFn: (q) => q
+                                          .eqOrNull(
+                                            'digital_product_status',
+                                            true,
+                                          )
+                                          .eqOrNull(
+                                            'digital_product_publish',
+                                            true,
+                                          )
+                                          .eqOrNull(
+                                            'trainer_active',
+                                            true,
+                                          ),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: Image.asset(
+                                            'assets/images/logo.png',
+                                          ),
+                                        );
+                                      }
+                                      List<CombinedDigitalproductViewRow>
+                                          digiprodListViewCombinedDigitalproductViewRowList =
+                                          snapshot.data!;
 
-                                    return ListView.separated(
-                                      padding: EdgeInsets.fromLTRB(
-                                        10.0,
-                                        0,
-                                        0,
-                                        0,
-                                      ),
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount:
-                                          digiprodListViewCombinedDigitalproductViewRowList
-                                              .length,
-                                      separatorBuilder: (_, __) =>
-                                          SizedBox(width: 12.0),
-                                      itemBuilder:
-                                          (context, digiprodListViewIndex) {
-                                        final digiprodListViewCombinedDigitalproductViewRow =
-                                            digiprodListViewCombinedDigitalproductViewRowList[
-                                                digiprodListViewIndex];
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              MainInfoDigitalProductWidget
-                                                  .routeName,
-                                              queryParameters: {
-                                                'productID': serializeParam(
-                                                  digiprodListViewCombinedDigitalproductViewRow
-                                                      .id,
-                                                  ParamType.int,
-                                                ),
-                                                'productType': serializeParam(
-                                                  'Цифровой продукт',
-                                                  ParamType.String,
-                                                ),
-                                                'productName': serializeParam(
-                                                  digiprodListViewCombinedDigitalproductViewRow
-                                                      .digitalProductName,
-                                                  ParamType.String,
-                                                ),
-                                                'productPrice': serializeParam(
-                                                  digiprodListViewCombinedDigitalproductViewRow
-                                                      .digitalProductPrice,
-                                                  ParamType.int,
-                                                ),
-                                                'productPhoto1': serializeParam(
-                                                  digiprodListViewCombinedDigitalproductViewRow
-                                                      .digitalProductPhoto1,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Container(
-                                            width: 147.0,
-                                            height: 97.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: Image.network(
-                                                  valueOrDefault<String>(
+                                      return ListView.separated(
+                                        padding: EdgeInsets.fromLTRB(
+                                          10.0,
+                                          0,
+                                          0,
+                                          0,
+                                        ),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount:
+                                            digiprodListViewCombinedDigitalproductViewRowList
+                                                .length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(width: 12.0),
+                                        itemBuilder:
+                                            (context, digiprodListViewIndex) {
+                                          final digiprodListViewCombinedDigitalproductViewRow =
+                                              digiprodListViewCombinedDigitalproductViewRowList[
+                                                  digiprodListViewIndex];
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                MainInfoDigitalProductWidget
+                                                    .routeName,
+                                                queryParameters: {
+                                                  'productID': serializeParam(
+                                                    digiprodListViewCombinedDigitalproductViewRow
+                                                        .id,
+                                                    ParamType.int,
+                                                  ),
+                                                  'productType': serializeParam(
+                                                    'Цифровой продукт',
+                                                    ParamType.String,
+                                                  ),
+                                                  'productName': serializeParam(
+                                                    digiprodListViewCombinedDigitalproductViewRow
+                                                        .digitalProductName,
+                                                    ParamType.String,
+                                                  ),
+                                                  'productPrice':
+                                                      serializeParam(
+                                                    digiprodListViewCombinedDigitalproductViewRow
+                                                        .digitalProductPrice,
+                                                    ParamType.int,
+                                                  ),
+                                                  'productPhoto1':
+                                                      serializeParam(
                                                     digiprodListViewCombinedDigitalproductViewRow
                                                         .digitalProductPhoto1,
-                                                    'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/DigiProd3.jpg',
+                                                    ParamType.String,
                                                   ),
-                                                ).image,
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Container(
+                                              width: 147.0,
+                                              height: 97.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: Image.network(
+                                                    valueOrDefault<String>(
+                                                      digiprodListViewCombinedDigitalproductViewRow
+                                                          .digitalProductPhoto1,
+                                                      'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/DigiProd3.jpg',
+                                                    ),
+                                                  ).image,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(24.0),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(24.0),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(16.0, 11.0,
-                                                          12.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    33.0,
-                                                                    0.0),
-                                                        child: Icon(
-                                                          Icons
-                                                              .menu_book_rounded,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          size: 24.0,
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Container(
-                                                          height: 22.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0x4DFFFFFF),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        16.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                16.0,
+                                                                11.0,
+                                                                12.0,
+                                                                0.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      33.0,
+                                                                      0.0),
+                                                          child: Icon(
+                                                            Icons
+                                                                .menu_book_rounded,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            size: 24.0,
                                                           ),
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          2.0,
-                                                                          0.0,
-                                                                          2.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                '.pdf, 18 стр.',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .start,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Container(
+                                                            height: 22.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0x4DFFFFFF),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          16.0),
+                                                            ),
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            2.0,
+                                                                            0.0,
+                                                                            2.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  '.pdf, 18 стр.',
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .inter(
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        fontSize:
+                                                                            8.0,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                      fontSize:
-                                                                          8.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 10.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Цифровой продукт',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0,
+                                                                10.0, 0.0, 0.0),
+                                                    child: Text(
+                                                      'Цифровой продукт',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                fontSize: 8.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: 8.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 2.0, 0.0, 12.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      digiprodListViewCombinedDigitalproductViewRow
-                                                          .digitalProductName,
-                                                      'Исправляем осанку за 10 дней',
-                                                    ).maybeHandleOverflow(
-                                                      maxChars: 40,
-                                                      replacement: '…',
+                                                              ),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 2.0,
+                                                                0.0, 12.0),
+                                                    child: Text(
+                                                      valueOrDefault<String>(
+                                                        digiprodListViewCombinedDigitalproductViewRow
+                                                            .digitalProductName,
+                                                        'Исправляем осанку за 10 дней',
+                                                      ).maybeHandleOverflow(
+                                                        maxChars: 40,
+                                                        replacement: '…',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                fontSize:
+                                                                    MediaQuery.sizeOf(context).width >=
+                                                                            380.0
+                                                                        ? 10.0
+                                                                        : 8.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width >=
-                                                                  380.0
-                                                              ? 10.0
-                                                              : 8.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
+                                                              ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ],

@@ -1215,14 +1215,20 @@ class _ClientCoachesWidgetState extends State<ClientCoachesWidget> {
                   ),
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.tapBarClientModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: TapBarClientWidget(),
+              if (responsiveVisibility(
+                context: context,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ))
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: wrapWithModel(
+                    model: _model.tapBarClientModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: TapBarClientWidget(),
+                  ),
                 ),
-              ),
             ],
           ),
         ),

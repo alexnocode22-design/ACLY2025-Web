@@ -53,6 +53,7 @@ class _AppBarUserMainWidgetState extends State<AppBarUserMainWidget> {
         Align(
           alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
+            width: double.infinity,
             height: 45.0,
             decoration: BoxDecoration(
               color: Color(0xFFFFF9F5),

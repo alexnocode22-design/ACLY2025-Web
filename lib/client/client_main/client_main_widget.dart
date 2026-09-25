@@ -1323,7 +1323,7 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Container(
-                                  width: 400.0,
+                                  width: double.infinity,
                                   height: 165.0,
                                   decoration: BoxDecoration(),
                                   child: FutureBuilder<
@@ -1813,7 +1813,7 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                 ),
                               ),
                               Container(
-                                width: 400.0,
+                                width: double.infinity,
                                 height: 165.0,
                                 decoration: BoxDecoration(),
                                 child: FutureBuilder<
@@ -2182,7 +2182,7 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                           ),
                         ),
                         Container(
-                          width: 400.0,
+                          width: double.infinity,
                           decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,

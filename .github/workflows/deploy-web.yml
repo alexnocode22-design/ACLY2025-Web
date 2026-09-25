@@ -1,0 +1,52 @@
+name: Deploy ACLY2025 Web
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter 3.38.6
+        run: |
+          git clone https://github.com/flutter/flutter.git ~/flutter --depth 1 -b 3.38.6
+          echo "$HOME/flutter/bin" >> $GITHUB_PATH
+
+      - name: Flutter precache web
+        run: flutter precache --web
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Flutter Web
+        run: flutter build web --release
+
+      - name: Upload to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: 147.45.246.103
+          port: 2224
+          username: acly-admin
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "build/web/*"
+          target: "/tmp/web-build-new/"
+          strip_components: 2
+
+      - name: Deploy on VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 147.45.246.103
+          port: 2224
+          username: acly-admin
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            sudo rm -rf /var/www/acly-web/*
+            sudo mkdir -p /var/www/acly-web
+            sudo mv /tmp/web-build-new/* /var/www/acly-web/
+            sudo chmod -R 755 /var/www/acly-web/
+            rm -rf /tmp/web-build-new/
+            sudo docker restart acly-web

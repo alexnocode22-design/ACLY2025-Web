@@ -2618,14 +2618,32 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                   ),
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.tapBarClientModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: TapBarClientWidget(),
+              if (() {
+                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                      return true;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointMedium) {
+                      return true;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointLarge) {
+                      return false;
+                    } else {
+                      return false;
+                    }
+                  }() &&
+                  responsiveVisibility(
+                    context: context,
+                    tabletLandscape: false,
+                    desktop: false,
+                  ))
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: wrapWithModel(
+                    model: _model.tapBarClientModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: TapBarClientWidget(),
+                  ),
                 ),
-              ),
             ],
           ),
         ),

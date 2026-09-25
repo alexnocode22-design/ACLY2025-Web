@@ -3125,20 +3125,26 @@ class _MainInfoTrainingWidgetState extends State<MainInfoTrainingWidget>
                   ),
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.tapBarClientMainTrainModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: TapBarClientMainTrainWidget(
-                    trainingId: widget.trainingID!,
-                    sessionId: valueOrDefault<String>(
-                      _model.sessionId,
-                      '\'\'',
+              if (responsiveVisibility(
+                context: context,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ))
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: wrapWithModel(
+                    model: _model.tapBarClientMainTrainModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: TapBarClientMainTrainWidget(
+                      trainingId: widget.trainingID!,
+                      sessionId: valueOrDefault<String>(
+                        _model.sessionId,
+                        '\'\'',
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

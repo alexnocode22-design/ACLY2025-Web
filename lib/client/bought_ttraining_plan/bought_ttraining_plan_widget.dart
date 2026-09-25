@@ -669,14 +669,20 @@ class _BoughtTtrainingPlanWidgetState extends State<BoughtTtrainingPlanWidget>
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: wrapWithModel(
-                      model: _model.tapBarTrainerModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: TapBarTrainerWidget(),
+                  if (responsiveVisibility(
+                    context: context,
+                    tablet: false,
+                    tabletLandscape: false,
+                    desktop: false,
+                  ))
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 1.0),
+                      child: wrapWithModel(
+                        model: _model.tapBarTrainerModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: TapBarTrainerWidget(),
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),

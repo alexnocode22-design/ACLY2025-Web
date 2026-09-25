@@ -2618,24 +2618,12 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                   ),
                 ),
               ),
-              if (() {
-                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-                      return true;
-                    } else if (MediaQuery.sizeOf(context).width <
-                        kBreakpointMedium) {
-                      return true;
-                    } else if (MediaQuery.sizeOf(context).width <
-                        kBreakpointLarge) {
-                      return false;
-                    } else {
-                      return false;
-                    }
-                  }() &&
-                  responsiveVisibility(
-                    context: context,
-                    tabletLandscape: false,
-                    desktop: false,
-                  ))
+              if (responsiveVisibility(
+                context: context,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ))
                 Align(
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: wrapWithModel(

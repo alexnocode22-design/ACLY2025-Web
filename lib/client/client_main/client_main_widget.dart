@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components_client/app_bar_user_main/app_bar_user_main_widget.dart';
 import '/components_client/tap_bar_client/tap_bar_client_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -235,12 +236,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                           .fontStyle,
                                                 ),
                                                 color: Color(0xFF2C2C2C),
-                                                fontSize:
-                                                    MediaQuery.sizeOf(context)
-                                                                .width >=
-                                                            380.0
-                                                        ? 20.0
-                                                        : 18.0,
+                                                fontSize: () {
+                                                  if (MediaQuery.sizeOf(context)
+                                                          .width <
+                                                      kBreakpointSmall) {
+                                                    return 18.0;
+                                                  } else if (MediaQuery.sizeOf(
+                                                              context)
+                                                          .width <
+                                                      kBreakpointMedium) {
+                                                    return 20.0;
+                                                  } else if (MediaQuery.sizeOf(
+                                                              context)
+                                                          .width <
+                                                      kBreakpointLarge) {
+                                                    return 22.0;
+                                                  } else {
+                                                    return 20.0;
+                                                  }
+                                                }(),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle:
@@ -386,11 +400,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                     .fontStyle,
                                           ),
                                           color: Colors.white,
-                                          fontSize: MediaQuery.sizeOf(context)
-                                                      .width >=
-                                                  360.0
-                                              ? 8.0
-                                              : 6.0,
+                                          fontSize: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                kBreakpointSmall) {
+                                              return 6.0;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointMedium) {
+                                              return 8.0;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointLarge) {
+                                              return 10.0;
+                                            } else {
+                                              return 8.0;
+                                            }
+                                          }(),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -1244,11 +1272,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            fontSize: MediaQuery.sizeOf(context)
-                                                        .width >=
-                                                    380.0
-                                                ? 20.0
-                                                : 18.0,
+                                            fontSize: () {
+                                              if (MediaQuery.sizeOf(context)
+                                                      .width <
+                                                  kBreakpointSmall) {
+                                                return 18.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointMedium) {
+                                                return 20.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointLarge) {
+                                                return 22.0;
+                                              } else {
+                                                return 20.0;
+                                              }
+                                            }(),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -1292,12 +1334,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Colors.white,
-                                              fontSize:
-                                                  MediaQuery.sizeOf(context)
-                                                              .width >=
-                                                          360.0
-                                                      ? 8.0
-                                                      : 6.0,
+                                              fontSize: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 6.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 8.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 10.0;
+                                                } else {
+                                                  return 8.0;
+                                                }
+                                              }(),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -1320,375 +1375,573 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                   ],
                                 ),
                               ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 165.0,
-                                  decoration: BoxDecoration(),
-                                  child: FutureBuilder<
-                                      List<CombinedTrainingplansViewRow>>(
-                                    future: CombinedTrainingplansViewTable()
-                                        .queryRows(
-                                      queryFn: (q) => q
-                                          .eqOrNull(
-                                            'training_plan_status',
-                                            true,
-                                          )
-                                          .eqOrNull(
-                                            'training_plan_publish',
-                                            true,
-                                          )
-                                          .eqOrNull(
-                                            'trainer_active',
-                                            true,
-                                          ),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: Image.asset(
-                                            'assets/images/logo.png',
-                                          ),
-                                        );
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall) {
+                                        return 165.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointMedium) {
+                                        return 280.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointLarge) {
+                                        return 330.0;
+                                      } else {
+                                        return 280.0;
                                       }
-                                      List<CombinedTrainingplansViewRow>
-                                          trainingplansListViewCombinedTrainingplansViewRowList =
-                                          snapshot.data!;
+                                    }(),
+                                    constraints: BoxConstraints(
+                                      maxHeight: 300.0,
+                                    ),
+                                    decoration: BoxDecoration(),
+                                    child: FutureBuilder<
+                                        List<CombinedTrainingplansViewRow>>(
+                                      future: CombinedTrainingplansViewTable()
+                                          .queryRows(
+                                        queryFn: (q) => q
+                                            .eqOrNull(
+                                              'training_plan_status',
+                                              true,
+                                            )
+                                            .eqOrNull(
+                                              'training_plan_publish',
+                                              true,
+                                            )
+                                            .eqOrNull(
+                                              'trainer_active',
+                                              true,
+                                            ),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: Image.asset(
+                                              'assets/images/logo.png',
+                                            ),
+                                          );
+                                        }
+                                        List<CombinedTrainingplansViewRow>
+                                            trainingplansListViewCombinedTrainingplansViewRowList =
+                                            snapshot.data!;
 
-                                      return ListView.separated(
-                                        padding: EdgeInsets.fromLTRB(
-                                          10.0,
-                                          0,
-                                          0,
-                                          0,
-                                        ),
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount:
-                                            trainingplansListViewCombinedTrainingplansViewRowList
-                                                .length,
-                                        separatorBuilder: (_, __) =>
-                                            SizedBox(width: 12.0),
-                                        itemBuilder: (context,
-                                            trainingplansListViewIndex) {
-                                          final trainingplansListViewCombinedTrainingplansViewRow =
-                                              trainingplansListViewCombinedTrainingplansViewRowList[
-                                                  trainingplansListViewIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 20.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  MainInfoTrainingPlanWidget
-                                                      .routeName,
-                                                  queryParameters: {
-                                                    'productID': serializeParam(
-                                                      trainingplansListViewCombinedTrainingplansViewRow
-                                                          .id,
-                                                      ParamType.int,
+                                        return ListView.separated(
+                                          padding: EdgeInsets.fromLTRB(
+                                            10.0,
+                                            0,
+                                            0,
+                                            0,
+                                          ),
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount:
+                                              trainingplansListViewCombinedTrainingplansViewRowList
+                                                  .length,
+                                          separatorBuilder: (_, __) =>
+                                              SizedBox(width: 12.0),
+                                          itemBuilder: (context,
+                                              trainingplansListViewIndex) {
+                                            final trainingplansListViewCombinedTrainingplansViewRow =
+                                                trainingplansListViewCombinedTrainingplansViewRowList[
+                                                    trainingplansListViewIndex];
+                                            return Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 20.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                      MainInfoTrainingPlanWidget
+                                                          .routeName,
+                                                      queryParameters: {
+                                                        'productID':
+                                                            serializeParam(
+                                                          trainingplansListViewCombinedTrainingplansViewRow
+                                                              .id,
+                                                          ParamType.int,
+                                                        ),
+                                                        'productType':
+                                                            serializeParam(
+                                                          'План тренировок',
+                                                          ParamType.String,
+                                                        ),
+                                                        'productName':
+                                                            serializeParam(
+                                                          trainingplansListViewCombinedTrainingplansViewRow
+                                                              .trainingPlanName,
+                                                          ParamType.String,
+                                                        ),
+                                                        'productPrice':
+                                                            serializeParam(
+                                                          trainingplansListViewCombinedTrainingplansViewRow
+                                                              .trainingPlanPrice,
+                                                          ParamType.int,
+                                                        ),
+                                                        'productPhoto1':
+                                                            serializeParam(
+                                                          trainingplansListViewCombinedTrainingplansViewRow
+                                                              .trainingPlanPhoto1,
+                                                          ParamType.String,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    width: () {
+                                                      if (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width <
+                                                          kBreakpointSmall) {
+                                                        return 147.0;
+                                                      } else if (MediaQuery
+                                                                  .sizeOf(
+                                                                      context)
+                                                              .width <
+                                                          kBreakpointMedium) {
+                                                        return 270.0;
+                                                      } else if (MediaQuery
+                                                                  .sizeOf(
+                                                                      context)
+                                                              .width <
+                                                          kBreakpointLarge) {
+                                                        return 320.0;
+                                                      } else {
+                                                        return 270.0;
+                                                      }
+                                                    }(),
+                                                    height: () {
+                                                      if (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width <
+                                                          kBreakpointSmall) {
+                                                        return 140.0;
+                                                      } else if (MediaQuery
+                                                                  .sizeOf(
+                                                                      context)
+                                                              .width <
+                                                          kBreakpointMedium) {
+                                                        return 280.0;
+                                                      } else if (MediaQuery
+                                                                  .sizeOf(
+                                                                      context)
+                                                              .width <
+                                                          kBreakpointLarge) {
+                                                        return 300.0;
+                                                      } else {
+                                                        return 280.0;
+                                                      }
+                                                    }(),
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 320.0,
+                                                      maxHeight: 300.0,
                                                     ),
-                                                    'productType':
-                                                        serializeParam(
-                                                      'План тренировок',
-                                                      ParamType.String,
-                                                    ),
-                                                    'productName':
-                                                        serializeParam(
-                                                      trainingplansListViewCombinedTrainingplansViewRow
-                                                          .trainingPlanName,
-                                                      ParamType.String,
-                                                    ),
-                                                    'productPrice':
-                                                        serializeParam(
-                                                      trainingplansListViewCombinedTrainingplansViewRow
-                                                          .trainingPlanPrice,
-                                                      ParamType.int,
-                                                    ),
-                                                    'productPhoto1':
-                                                        serializeParam(
-                                                      trainingplansListViewCombinedTrainingplansViewRow
-                                                          .trainingPlanPhoto1,
-                                                      ParamType.String,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Container(
-                                                width: 147.0,
-                                                height: 140.0,
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 147.0,
-                                                  maxHeight: 140.0,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 20.0,
-                                                      color: Color(0x3F000000),
-                                                      offset: Offset(
-                                                        5.0,
-                                                        10.0,
-                                                      ),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(4.0, 4.0,
-                                                                4.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Flexible(
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.0, 0.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(3.0),
-                                                              child: Container(
-                                                                constraints:
-                                                                    BoxConstraints(
-                                                                  minWidth:
-                                                                      139.0,
-                                                                  minHeight:
-                                                                      75.0,
-                                                                ),
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 20.0,
+                                                          color:
+                                                              Color(0x3F000000),
+                                                          offset: Offset(
+                                                            5.0,
+                                                            10.0,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              valueOrDefault<
+                                                                  double>(
+                                                        () {
+                                                          if (MediaQuery.sizeOf(
+                                                                      context)
+                                                                  .width <
+                                                              kBreakpointSmall) {
+                                                            return 8.0;
+                                                          } else if (MediaQuery
+                                                                      .sizeOf(
                                                                           context)
-                                                                      .secondaryBackground,
-                                                                  image:
-                                                                      DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    image: Image
+                                                                  .width <
+                                                              kBreakpointMedium) {
+                                                            return 10.0;
+                                                          } else if (MediaQuery
+                                                                      .sizeOf(
+                                                                          context)
+                                                                  .width <
+                                                              kBreakpointLarge) {
+                                                            return 14.0;
+                                                          } else {
+                                                            return 10.0;
+                                                          }
+                                                        }(),
+                                                        0.0,
+                                                      )),
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    4.0,
+                                                                    4.0,
+                                                                    4.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              (FFMainAxisAlignment
+                                                                      .start)
+                                                                  .flutterValue,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Flexible(
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        -1.0,
+                                                                        0.0),
+                                                                child: Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              3.0),
+                                                                  child:
+                                                                      Container(
+                                                                    constraints:
+                                                                        BoxConstraints(
+                                                                      minWidth:
+                                                                          () {
+                                                                        if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointSmall) {
+                                                                          return 139.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointMedium) {
+                                                                          return 252.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointLarge) {
+                                                                          return 302.0;
+                                                                        } else {
+                                                                          return 252.0;
+                                                                        }
+                                                                      }(),
+                                                                      minHeight:
+                                                                          () {
+                                                                        if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointSmall) {
+                                                                          return 75.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointMedium) {
+                                                                          return 120.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointLarge) {
+                                                                          return 165.0;
+                                                                        } else {
+                                                                          return 120.0;
+                                                                        }
+                                                                      }(),
+                                                                    ),
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      image:
+                                                                          DecorationImage(
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                        image: Image
+                                                                            .network(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            trainingplansListViewCombinedTrainingplansViewRow.trainingPlanPhoto1,
+                                                                            'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/training_plan1.jpg',
+                                                                          ),
+                                                                        ).image,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              valueOrDefault<double>(
+                                                                        () {
+                                                                          if (MediaQuery.sizeOf(context).width <
+                                                                              kBreakpointSmall) {
+                                                                            return 8.0;
+                                                                          } else if (MediaQuery.sizeOf(context).width <
+                                                                              kBreakpointMedium) {
+                                                                            return 10.0;
+                                                                          } else if (MediaQuery.sizeOf(context).width <
+                                                                              kBreakpointLarge) {
+                                                                            return 14.0;
+                                                                          } else {
+                                                                            return 10.0;
+                                                                          }
+                                                                        }(),
+                                                                        0.0,
+                                                                      )),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      -1.0,
+                                                                      0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    trainingplansListViewCombinedTrainingplansViewRow
+                                                                        .trainingPlanName,
+                                                                    'Укрепляем спину',
+                                                                  ).maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        40,
+                                                                    replacement:
+                                                                        '…',
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .readexPro(
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: Color(
+                                                                            0xFF2C2C2C),
+                                                                        fontSize:
+                                                                            () {
+                                                                          if (MediaQuery.sizeOf(context).width <
+                                                                              kBreakpointSmall) {
+                                                                            return 10.0;
+                                                                          } else if (MediaQuery.sizeOf(context).width <
+                                                                              kBreakpointMedium) {
+                                                                            return 12.0;
+                                                                          } else if (MediaQuery.sizeOf(context).width <
+                                                                              kBreakpointLarge) {
+                                                                            return 14.0;
+                                                                          } else {
+                                                                            return 12.0;
+                                                                          }
+                                                                        }(),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Divider(
+                                                              thickness: 0.5,
+                                                              color: Color(
+                                                                  0xFFEEEEEE),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: () {
+                                                                      if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointSmall) {
+                                                                        return 24.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointMedium) {
+                                                                        return 36.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointLarge) {
+                                                                        return 48.0;
+                                                                      } else {
+                                                                        return 36.0;
+                                                                      }
+                                                                    }(),
+                                                                    height: () {
+                                                                      if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointSmall) {
+                                                                        return 24.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointMedium) {
+                                                                        return 36.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointLarge) {
+                                                                        return 48.0;
+                                                                      } else {
+                                                                        return 36.0;
+                                                                      }
+                                                                    }(),
+                                                                    clipBehavior:
+                                                                        Clip.antiAlias,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                    child: Image
                                                                         .network(
                                                                       valueOrDefault<
                                                                           String>(
                                                                         trainingplansListViewCombinedTrainingplansViewRow
-                                                                            .trainingPlanPhoto1,
-                                                                        'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/training_plan1.jpg',
+                                                                            .userPhoto,
+                                                                        'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/blank_avatar.jpg',
                                                                       ),
-                                                                    ).image,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  -1.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        5.0,
-                                                                        5.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                trainingplansListViewCombinedTrainingplansViewRow
-                                                                    .trainingPlanName,
-                                                                'Укрепляем спину',
-                                                              ).maybeHandleOverflow(
-                                                                maxChars: 40,
-                                                                replacement:
-                                                                    '…',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .readexPro(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    color: Color(
-                                                                        0xFF2C2C2C),
-                                                                    fontSize: MediaQuery.sizeOf(context).width >=
-                                                                            380.0
-                                                                        ? 10.0
-                                                                        : 8.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
                                                                   ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Divider(
-                                                          thickness: 0.5,
-                                                          color:
-                                                              Color(0xFFEEEEEE),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      4.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Container(
-                                                                width: 24.0,
-                                                                height: 24.0,
-                                                                clipBehavior: Clip
-                                                                    .antiAlias,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                ),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    trainingplansListViewCombinedTrainingplansViewRow
-                                                                        .userPhoto,
-                                                                    'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/blank_avatar.jpg',
-                                                                  ),
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             6.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        '${trainingplansListViewCombinedTrainingplansViewRow.userName} ${trainingplansListViewCombinedTrainingplansViewRow.userSurname}',
-                                                                        'Нет имени',
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.inter(
-                                                                              fontWeight: FontWeight.w500,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                            color:
-                                                                                Color(0xFF292D32),
-                                                                            fontSize:
-                                                                                6.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .end,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            '${trainingplansListViewCombinedTrainingplansViewRow.userName} ${trainingplansListViewCombinedTrainingplansViewRow.userSurname}',
+                                                                            'Нет имени',
                                                                           ),
-                                                                    ),
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'Тренер',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.inter(
-                                                                                fontWeight: FontWeight.w300,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.inter(
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                                color: Color(0xFF292D32),
+                                                                                fontSize: () {
+                                                                                  if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                    return 6.0;
+                                                                                  } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                    return 8.0;
+                                                                                  } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                    return 10.0;
+                                                                                  } else {
+                                                                                    return 8.0;
+                                                                                  }
+                                                                                }(),
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FontWeight.w500,
                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
-                                                                              color: Color(0xFF292D32),
-                                                                              fontSize: 6.0,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w300,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                      ),
+                                                                        ),
+                                                                        Align(
+                                                                          alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Тренер',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  font: GoogleFonts.inter(
+                                                                                    fontWeight: FontWeight.w300,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                                  color: Color(0xFF292D32),
+                                                                                  fontSize: () {
+                                                                                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                      return 6.0;
+                                                                                    } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                      return 8.0;
+                                                                                    } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                      return 10.0;
+                                                                                    } else {
+                                                                                      return 8.0;
+                                                                                    }
+                                                                                  }(),
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FontWeight.w300,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
@@ -1735,12 +1988,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              fontSize:
-                                                  MediaQuery.sizeOf(context)
-                                                              .width >=
-                                                          380.0
-                                                      ? 20.0
-                                                      : 18.0,
+                                              fontSize: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 18.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 20.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 22.0;
+                                                } else {
+                                                  return 20.0;
+                                                }
+                                              }(),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -1785,12 +2051,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Colors.white,
-                                              fontSize:
-                                                  MediaQuery.sizeOf(context)
-                                                              .width >=
-                                                          360.0
-                                                      ? 8.0
-                                                      : 6.0,
+                                              fontSize: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 6.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 8.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 10.0;
+                                                } else {
+                                                  return 8.0;
+                                                }
+                                              }(),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -1817,7 +2096,22 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 165.0,
+                                  height: () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall) {
+                                      return 165.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointMedium) {
+                                      return 280.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointLarge) {
+                                      return 330.0;
+                                    } else {
+                                      return 280.0;
+                                    }
+                                  }(),
                                   decoration: BoxDecoration(),
                                   child: FutureBuilder<
                                       List<CombinedNutritionplansViewRow>>(
@@ -1921,8 +2215,46 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                   );
                                                 },
                                                 child: Container(
-                                                  width: 147.0,
-                                                  height: 140.0,
+                                                  width: () {
+                                                    if (MediaQuery.sizeOf(
+                                                                context)
+                                                            .width <
+                                                        kBreakpointSmall) {
+                                                      return 147.0;
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointMedium) {
+                                                      return 270.0;
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointLarge) {
+                                                      return 320.0;
+                                                    } else {
+                                                      return 270.0;
+                                                    }
+                                                  }(),
+                                                  height: () {
+                                                    if (MediaQuery.sizeOf(
+                                                                context)
+                                                            .width <
+                                                        kBreakpointSmall) {
+                                                      return 140.0;
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointMedium) {
+                                                      return 280.0;
+                                                    } else if (MediaQuery
+                                                                .sizeOf(context)
+                                                            .width <
+                                                        kBreakpointLarge) {
+                                                      return 300.0;
+                                                    } else {
+                                                      return 280.0;
+                                                    }
+                                                  }(),
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -1980,9 +2312,41 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                   constraints:
                                                                       BoxConstraints(
                                                                     minWidth:
-                                                                        139.0,
+                                                                        () {
+                                                                      if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointSmall) {
+                                                                        return 139.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointMedium) {
+                                                                        return 252.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointLarge) {
+                                                                        return 302.0;
+                                                                      } else {
+                                                                        return 252.0;
+                                                                      }
+                                                                    }(),
                                                                     minHeight:
-                                                                        75.0,
+                                                                        () {
+                                                                      if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointSmall) {
+                                                                        return 75.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointMedium) {
+                                                                        return 120.0;
+                                                                      } else if (MediaQuery.sizeOf(context)
+                                                                              .width <
+                                                                          kBreakpointLarge) {
+                                                                        return 165.0;
+                                                                      } else {
+                                                                        return 120.0;
+                                                                      }
+                                                                    }(),
                                                                   ),
                                                                   decoration:
                                                                       BoxDecoration(
@@ -2003,6 +2367,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                         ),
                                                                       ).image,
                                                                     ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            valueOrDefault<double>(
+                                                                      () {
+                                                                        if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointSmall) {
+                                                                          return 8.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointMedium) {
+                                                                          return 10.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointLarge) {
+                                                                          return 14.0;
+                                                                        } else {
+                                                                          return 10.0;
+                                                                        }
+                                                                      }(),
+                                                                      0.0,
+                                                                    )),
                                                                   ),
                                                                 ),
                                                               ),
@@ -2045,10 +2428,21 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                       ),
                                                                       color: Color(
                                                                           0xFF2C2C2C),
-                                                                      fontSize: MediaQuery.sizeOf(context).width >=
-                                                                              380.0
-                                                                          ? 10.0
-                                                                          : 8.0,
+                                                                      fontSize:
+                                                                          () {
+                                                                        if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointSmall) {
+                                                                          return 10.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointMedium) {
+                                                                          return 12.0;
+                                                                        } else if (MediaQuery.sizeOf(context).width <
+                                                                            kBreakpointLarge) {
+                                                                          return 14.0;
+                                                                        } else {
+                                                                          return 12.0;
+                                                                        }
+                                                                      }(),
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
@@ -2074,17 +2468,54 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                         8.0,
                                                                         0.0,
                                                                         0.0,
-                                                                        4.0),
+                                                                        5.0),
                                                             child: Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
-                                                                ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
+                                                                Container(
+                                                                  width: () {
+                                                                    if (MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall) {
+                                                                      return 24.0;
+                                                                    } else if (MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointMedium) {
+                                                                      return 36.0;
+                                                                    } else if (MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointLarge) {
+                                                                      return 48.0;
+                                                                    } else {
+                                                                      return 36.0;
+                                                                    }
+                                                                  }(),
+                                                                  height: () {
+                                                                    if (MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointSmall) {
+                                                                      return 24.0;
+                                                                    } else if (MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointMedium) {
+                                                                      return 36.0;
+                                                                    } else if (MediaQuery.sizeOf(context)
+                                                                            .width <
+                                                                        kBreakpointLarge) {
+                                                                      return 48.0;
+                                                                    } else {
+                                                                      return 36.0;
+                                                                    }
+                                                                  }(),
+                                                                  clipBehavior:
+                                                                      Clip.antiAlias,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                  ),
                                                                   child: Image
                                                                       .network(
                                                                     valueOrDefault<
@@ -2093,9 +2524,6 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                           .userPhoto,
                                                                       'https://supa.3146577-db61528.twc1.net/storage/v1/object/public/acly-public/images/blank_avatar.jpg',
                                                                     ),
-                                                                    width: 24.0,
-                                                                    height:
-                                                                        24.0,
                                                                     fit: BoxFit
                                                                         .cover,
                                                                   ),
@@ -2132,7 +2560,17 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
                                                                               color: Color(0xFF292D32),
-                                                                              fontSize: 6.0,
+                                                                              fontSize: () {
+                                                                                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                  return 6.0;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                  return 8.0;
+                                                                                } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                  return 10.0;
+                                                                                } else {
+                                                                                  return 8.0;
+                                                                                }
+                                                                              }(),
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -2153,7 +2591,17 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
                                                                                 color: Color(0xFF292D32),
-                                                                                fontSize: 6.0,
+                                                                                fontSize: () {
+                                                                                  if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                                                                                    return 6.0;
+                                                                                  } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                                                                                    return 8.0;
+                                                                                  } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                                                                                    return 10.0;
+                                                                                  } else {
+                                                                                    return 8.0;
+                                                                                  }
+                                                                                }(),
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.w300,
                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -2209,11 +2657,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            fontSize: MediaQuery.sizeOf(context)
-                                                        .width >=
-                                                    380.0
-                                                ? 20.0
-                                                : 18.0,
+                                            fontSize: () {
+                                              if (MediaQuery.sizeOf(context)
+                                                      .width <
+                                                  kBreakpointSmall) {
+                                                return 18.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointMedium) {
+                                                return 20.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointLarge) {
+                                                return 22.0;
+                                              } else {
+                                                return 20.0;
+                                              }
+                                            }(),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -2257,12 +2719,25 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Colors.white,
-                                              fontSize:
-                                                  MediaQuery.sizeOf(context)
-                                                              .width >=
-                                                          360.0
-                                                      ? 8.0
-                                                      : 6.0,
+                                              fontSize: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 6.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 8.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 10.0;
+                                                } else {
+                                                  return 8.0;
+                                                }
+                                              }(),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -2289,7 +2764,22 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 97.0,
+                                  height: () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall) {
+                                      return 97.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointMedium) {
+                                      return 160.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointLarge) {
+                                      return 260.0;
+                                    } else {
+                                      return 160.0;
+                                    }
+                                  }(),
                                   decoration: BoxDecoration(),
                                   child: FutureBuilder<
                                       List<CombinedDigitalproductViewRow>>(
@@ -2382,8 +2872,44 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                                               );
                                             },
                                             child: Container(
-                                              width: 147.0,
-                                              height: 97.0,
+                                              width: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 147.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 270.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 320.0;
+                                                } else {
+                                                  return 270.0;
+                                                }
+                                              }(),
+                                              height: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 97.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 160.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 260.0;
+                                                } else {
+                                                  return 160.0;
+                                                }
+                                              }(),
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -2607,6 +3133,10 @@ class _ClientMainWidgetState extends State<ClientMainWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 26.0, 16.0, 0.0),
                           child: Container(
+                            width: double.infinity,
+                            constraints: BoxConstraints(
+                              minWidth: double.infinity,
+                            ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(24.0),
                             ),

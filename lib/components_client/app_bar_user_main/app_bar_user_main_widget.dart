@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components_client/dropdown_client/dropdown_client_widget.dart';
+import '/components_client/tap_bar_client_web/tap_bar_client_web_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -62,26 +63,46 @@ class _AppBarUserMainWidgetState extends State<AppBarUserMainWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  decoration: BoxDecoration(),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: SvgPicture.asset(
-                            'assets/images/Group_12.svg',
-                            width: 120.0,
-                            height: 32.0,
-                            fit: BoxFit.cover,
-                          ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Group_12.svg',
+                                width: 120.0,
+                                height: 32.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                      tablet: false,
+                      tabletLandscape: false,
+                    ))
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(32.0, 0.0, 0.0, 0.0),
+                        child: wrapWithModel(
+                          model: _model.tapBarClientWebModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: TapBarClientWebWidget(),
+                        ),
+                      ),
+                  ],
                 ),
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),

@@ -69,7 +69,7 @@ class _AppBarUserMyShablonyWidgetState
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.safePop();
+                    context.pushNamed(ClientMainWidget.routeName);
                   },
                   child: Container(
                     decoration: BoxDecoration(),
